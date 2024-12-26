@@ -49,6 +49,8 @@ const showError = (val: string): void => {
 // this never return a value , when a error is found
 const handleError = (errMsg: string): never => {
   throw new Error(errMsg);
+
+  console.log("code not executed as throw new error will end the function")
 };
 
 console.log(showError("abhay"));
