@@ -65,3 +65,56 @@ const  IdentityNine =<T> (val:T[]):T=>{
 const  IdentityTen =<T,> (val:T[]):T=>{
     return val[2];
 }
+
+// multiple generics
+
+function IdentityEleven <T,U>(val1:T,val2:U):object{
+    return {val1,val2}
+} 
+IdentityEleven(5,3)
+
+interface Database{
+    name:string,
+    pass:string
+}
+// ! extends can be used in generics variable also
+// type U is generic but can be defined also 
+function IdentityTwelve <T,U extends Database>(val1:T,val2:U):object{
+    return {val1,val2}
+} 
+// this wont work
+// IdentityTwelve(5,3)
+
+IdentityTwelve(5,{name:"as",pass:"as"})
+
+// documentation example:
+// function getProperty<Type, Key extends keyof Type>(obj: Type, key: Key) {
+//     return obj[key];
+//   }
+   
+//   let x = { a: 1, b: 2, c: 3, d: 4 };
+   
+//   getProperty(x, "a");
+
+// ! Use of genrics in classes
+
+interface Quiz{
+    name:string,
+    totalQuestions:number
+}
+
+interface Courses {
+    name:string,
+    author:string 
+}
+
+class SellableItems <T>{
+    public cart:T[] =[];
+
+    addToCart(item:T){
+        this.cart.push(item)
+    }
+
+}
+
+// the above Class take generic input can be quiz or courses and tocart for selling 
