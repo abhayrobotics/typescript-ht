@@ -45,3 +45,25 @@ const IdentityNine = (val) => {
 const IdentityTen = (val) => {
     return val[2];
 };
+// multiple generics
+function IdentityEleven(val1, val2) {
+    return { val1, val2 };
+}
+IdentityEleven(5, 3);
+// ! extends can be used in generics variable also
+// type U is generic but can be defined also 
+function IdentityTwelve(val1, val2) {
+    return { val1, val2 };
+}
+// this wont work
+// IdentityTwelve(5,3)
+IdentityTwelve(5, { name: "as", pass: "as" });
+class SellableItems {
+    constructor() {
+        this.cart = [];
+    }
+    addToCart(item) {
+        this.cart.push(item);
+    }
+}
+// the above Class take generic input can be quiz or courses and tocart for selling 
