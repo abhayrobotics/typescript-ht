@@ -59,7 +59,6 @@ function logValue(x: Date | string) {
   }
 }
 
-
 // !  is and as keyword , type precates watch documentation
 type Fish = { swim: () => void };
 type Bird = { Fly: () => void };
@@ -68,50 +67,47 @@ function isFish(pet: Fish | Bird): pet is Fish {
   return (pet as Fish).swim !== undefined;
 }
 
-
 // ! Discriminated unions
 
-
 interface Circle {
-    kind: "circle",
-    radius: number
+  kind: "circle";
+  radius: number;
 }
 
 interface Square {
-    kind: "square"
-    side: number
+  kind: "square";
+  side: number;
 }
 
 interface Rectangle {
-    kind: "rectangle",
-    length: number,
-    width: number
+  kind: "rectangle";
+  length: number;
+  width: number;
 }
 
-type Shape = Circle | Square | Rectangle
+type Shape = Circle | Square | Rectangle;
 
-function getTrueShape(shape: Shape){
-    if (shape.kind === "circle") {
-        return Math.PI * shape.radius ** 2
-    }
-    //return shape.side * shape.side
+function getTrueShape(shape: Shape) {
+  if (shape.kind === "circle") {
+    return Math.PI * shape.radius ** 2;
+  }
+  //return shape.side * shape.side
 }
-
 
 // exhaustice checking with never
 
-function getArea(shape: Shape){
-    switch(shape.kind){
-        case "circle":
-            return Math.PI * shape.radius ** 2
+function getArea(shape: Shape) {
+  switch (shape.kind) {
+    case "circle":
+      return Math.PI * shape.radius ** 2;
 
-        case "square":
-            return shape.side * shape.side
-        case "rectangle":
-            return shape.length * shape.width
+    case "square":
+      return shape.side * shape.side;
+    case "rectangle":
+      return shape.length * shape.width;
 
-        default:
-            const _defaultforshape: never = shape
-            return _defaultforshape
-    }
+    default:
+      const _defaultforshape: never = shape;
+      return _defaultforshape;
+  }
 }
