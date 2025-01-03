@@ -1,4 +1,5 @@
 
+
     ```` typescript
     const showError = (val: string): void => {
     console.log(val);
